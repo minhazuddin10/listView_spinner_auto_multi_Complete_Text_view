@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">listView_spinner_auto_multi_Complete_Text_view</string>
+
+    <string-array name="name">
+        <item>Apple</item>
+        <item>Orange</item>
+        <item>Banana</item>
+        <item>Watermalon</item>
+        <item>Jackfruits</item>
+
+    </string-array>
 </resources>
