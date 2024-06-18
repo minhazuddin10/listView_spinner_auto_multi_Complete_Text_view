@@ -1,5 +1,6 @@
 package com.example.listview_spinner_auto_multi_complete_text_view;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Layout;
@@ -32,9 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
 //String[] array = {"Apple","Banana","JackFruits","Watermalon","Lici","Orange"};
 
-    Integer  [] prices={10,20,30,40,50,60,70};
-    Integer [] quantity={2,3,5,6,8,20};
+    Integer  [] prices={10,20,30,40,50,60,70,56,34,34,45,56,45,45,2,34,5,23,3};
+    Integer [] quantity={2,3,5,6,8,20,67,45,34,22,23,112,23,34,45,56,22};
+
     String[] fruitsName;
+
+    String[] country ={"Bangladesh","Brazil","Belgiam","Australia","Argentina","Austia"};
 
 
     @Override
@@ -114,6 +118,47 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        ArrayAdapter<String>arrayAdapter3=new ArrayAdapter<>
+                (MainActivity.this, android.R.layout.simple_list_item_1,country);
+
+        Auto.setAdapter(arrayAdapter3);
+
+        ArrayAdapter<String>arrayAdapter4=new ArrayAdapter<>
+                (MainActivity.this, android.R.layout.simple_list_item_1,country);
+
+        Multi.setAdapter(arrayAdapter4);
+        Multi.setThreshold(1);
+        Multi.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+
+
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ii=new Intent(MainActivity.this,MainActivity2.class);
+                String a=e1.getText().toString().trim();
+                String b=e2.getText().toString().trim();
+                String c=e3.getText().toString().trim();
+
+                Integer b1=Integer.parseInt(b);
+                Integer c1=Integer.parseInt(c);
+                Integer d1=b1*c1;
+                String e=String.valueOf(d1);
+
+                String auto =Auto.getText().toString().trim();
+                String multi=Multi.getText().toString().trim();
+
+                ii.putExtra("key1",a);
+                ii.putExtra("key2",e);
+                ii.putExtra("key3",auto);
+                ii.putExtra("key4",multi);
+
+                startActivity(ii);
 
             }
         });
